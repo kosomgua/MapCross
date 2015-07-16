@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FCD366"/>
+        </shape>
+    </item>
+</selector>
+
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item android:state_enabled="true" android:drawable="@drawable/forlist1" />-->
+<!--    <item android:drawable="@drawable/forlist2"/> -->
+<!--</selector>-->

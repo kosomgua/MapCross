@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--<item-->
+<!-- 	  android:id="@+id/back_button"-->
+<!--      android:icon="@drawable/ "-->
+<!--      android:showAsAction="ifRoom"-->
+<!--      android:title="Back"/>-->
+
+
+ <item
+      android:id="@+id/MapButton"
+      android:icon="@drawable/ic_action_location"
+      android:showAsAction="ifRoom"
+      android:title="Go to map"/>
+ <item
+      android:id="@+id/EditButton"
+      android:icon="@drawable/ic_action_edit"
+      android:showAsAction="ifRoom"
+      android:title="Edit"/>
+<item
+      android:id="@+id/AcceptButton"
+      android:icon="@drawable/ic_action_accept"
+      android:showAsAction="ifRoom"
+      android:title="Accept"/>
+</menu>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/NameItemText"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.85"
+            android:textSize="18dip"
+            android:gravity="left"
+            local:MvxBind="Text Name"
+            android:maxLength="28" />
+        <Mvx.MvxImageView
+            android:id="@+id/colorHamster"
+            local:MvxBind="ImageUrl ImageName"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.15" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/CoordsTextLat"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="0.45"
+            android:textSize="12dip"
+            local:MvxBind="Text HamsterLatitude"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/CoordsTextLong"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="0.45"
+            android:textSize="12dip"
+            local:MvxBind="Text HamsterLongitude"
+            android:gravity="center" />
+        <CheckBox
+            android:id="@+id/checkBoxFocusArea"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:enabled="true"
+            android:layout_gravity="center"
+            android:focusable="false"
+            local:MvxBind="Checked Check" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapCross.Core", "MapCross.Core\MapCross.Core.csproj", "{C280EBED-108E-4A2E-8AE4-BCBD0C419E56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapCross.Droid", "MapCross.Droid\MapCross.Droid.csproj", "{032D7160-D353-4AAC-91EA-3B0ED6E9D42F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{032D7160-D353-4AAC-91EA-3B0ED6E9D42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032D7160-D353-4AAC-91EA-3B0ED6E9D42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032D7160-D353-4AAC-91EA-3B0ED6E9D42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032D7160-D353-4AAC-91EA-3B0ED6E9D42F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C280EBED-108E-4A2E-8AE4-BCBD0C419E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C280EBED-108E-4A2E-8AE4-BCBD0C419E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C280EBED-108E-4A2E-8AE4-BCBD0C419E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C280EBED-108E-4A2E-8AE4-BCBD0C419E56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

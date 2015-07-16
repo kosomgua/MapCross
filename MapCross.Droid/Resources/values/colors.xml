@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <color name="actionbar_text">#01939f</color>
+      <color name="my_b">#769bc0</color>
+      <color name="my_y">#ffdb00</color>
+      <color name="my_red">#eb3c46</color>
+      <color name="my_gray">#738182</color>
+      <color name="my_black">#000000</color>
+      <color name="my_white">#ffffff</color>
+      <color name="darkred">#b02424</color>
+      <drawable name="list_normal">#96FFFFFF</drawable>
+      <drawable name="list_active">#66000000</drawable>
+      <drawable name="list_pressed">#CA000000</drawable>
+      <drawable name="forlist2">#FF666666</drawable>
+      <drawable name="forlist1">#66FFFFFF</drawable>
+      <color name="primary">#3498DB</color>
+	  <color name="primary_pressed">#2C3E50</color>
+	  <color name="ripple">#ff80ab</color>
+	  <color name="accent">#E64A19</color>
+	  <color name="accent_pressed">#BF360C</color>
+	  <color name="color_forWindow">#e2faff</color>
+	  <color name="color_forColorPrimary">#bfeef9</color>
+	  <color name="color_for_navigationBarColor">#bfeef9</color>
+	  <color name="color_for_StatusColor">#02659A</color>
+	   <color name="colorActionBarEdit">#a3a3a3</color>
+	   <color name="colorBackgroundEdit">#d9dbe1</color>
+</resources>

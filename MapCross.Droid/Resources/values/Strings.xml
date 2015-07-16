@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">Map</string>
+	<string name="dummy_title">Dummy title</string>
+    <string name="delete_content_description">Delete</string>
+    <string name="stringCoordinates">Coordinates: </string>
+    <string name="stringSpaceCor"> / </string>
+    <string name="stringName">Name: </string>
+    <string name="stringSpace">  </string>
+    <string name="stringOrder">Order № </string>
+    <string name="stringPoint">. </string>
+    <string name="EmptyListOrders">Orders are missing, add order.</string>
+     <string name="dialog_text">Select the type of orders for building a route:</string>
+     <string name="allPointRoute">All orders</string>
+     <string name="red">Only orders with red hamster</string>
+     <string name="yellow">Only orders with yellow hamster</string>
+     <string name="green">Only orders with green hamster</string>
+</resources>
