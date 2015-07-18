@@ -34,7 +34,7 @@ namespace MapCross.Core.ViewModels
 		}
 
 		MvxCommand _deleteCommand;
-		public System.Windows.Input.ICommand DeleteCommand
+		public ICommand DeleteCommand
 		{
 			get
 			{
@@ -57,14 +57,15 @@ namespace MapCross.Core.ViewModels
 		{
 			get 
 			{
-				return new MvxCommand(() => {
-					ShowViewModel<MapViewModel>();
+				return new MvxCommand (() =>  {
+					ShowViewModel<MapViewModel> ();
 				});
 			}
 		}
 
 		public void Remove (){
-			_dataService.RemoveSelected(Orders);
+			_dataService.RemoveSelected(_orders);
+			Orders = _dataService.Filling ();
 		}
 	}
 }
