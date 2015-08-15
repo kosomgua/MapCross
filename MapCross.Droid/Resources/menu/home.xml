@@ -13,13 +13,8 @@
       android:showAsAction="ifRoom"
       android:title="Go to map"/>
  <item
-      android:id="@+id/EditButton"
-      android:icon="@drawable/ic_action_edit"
+      android:id="@+id/DeleteButton"
+      android:icon="@drawable/ic_action_delete"
       android:showAsAction="ifRoom"
-      android:title="Edit"/>
-<item
-      android:id="@+id/AcceptButton"
-      android:icon="@drawable/ic_action_accept"
-      android:showAsAction="ifRoom"
-      android:title="Accept"/>
+      android:title="Delete" />
 </menu>

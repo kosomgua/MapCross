@@ -45,17 +45,6 @@ namespace MapCross.Core.Services
 		}
 
 		#endregion
-
-
-		public void RemoveSelected (List<Order> orders)
-		{
-			foreach (var a in orders) {
-				if (a.Check) {
-					_connection.Delete (a);
-				}
-			}
-		}
-  
 	}
 }
 

@@ -137,49 +137,25 @@
                 android:background="@drawable/hamster_red"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="50dp" />
+                android:layout_marginLeft="60dp" />
             <ImageView
                 android:id="@+id/colorHamster"
                 android:background="@drawable/hamster_green"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="50dp" />
+                android:layout_marginLeft="60dp" />
             <ImageView
                 android:id="@+id/colorHamster"
                 android:background="@drawable/hamster_yellow"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="50dp" />
+                android:layout_marginLeft="60dp" />
         </LinearLayout>
-        <RadioGroup
-            android:id="@+id/radioGroupH"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+        <MvxRadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:orientation="horizontal"
-            android:weightSum="3">
-            <RadioButton
-                android:id="@+id/red_hamster"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                local:MvxBind="Click SelectRedCommand"
-                android:layout_weight="1"
-                android:layout_marginLeft="50dp"
-                android:text="red" />
-            <RadioButton
-                android:id="@+id/green_hamster"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                local:MvxBind="Click SelectGreenCommand"
-                android:layout_weight="1"
-                android:text="green" />
-            <RadioButton
-                android:id="@+id/yellow_hamster"
-                local:MvxBind="Click SelectYellowCommand"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:layout_marginRight="50dp"
-                android:text="yellow" />
-        </RadioGroup>
+            local:MvxItemTemplate="@layout/itemradio"
+            local:MvxBind="ItemsSource ColorGroup; SelectedItem SelectedColor" />
     </LinearLayout>
 </RelativeLayout>

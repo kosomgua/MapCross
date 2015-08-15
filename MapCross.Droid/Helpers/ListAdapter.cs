@@ -11,67 +11,17 @@ using Cirrious.MvvmCross.Community.Plugins.Sqlite;
 
 namespace MapCross.Droid
 {
-	public class ListAdapter : MvxAdapter
-		{
-//		ISQLiteConnection connection;
-		public ListAdapter(Context context, IMvxAndroidBindingContext bindingContext) : base(context, bindingContext)
-			{
-			}
-
-//			protected override View GetBindableView (View convertView, object source, int templateId)
-//			{
-//			var view = convertView;
-//			templateId = Resource.Layout.item_order;
-//
-//			var checkBox = view.FindViewById<CheckBox> (Resource.Id.checkBoxFocusArea);
-//
-//
-//			checkBox.Click += (sender, e) => {
-//				if (checkBox.Checked)
-//					((Order)source).IsChecked = true;
-//				else
-//					((Order)source).IsChecked = false;
-//			};
-//
-//
-//				return base.GetBindableView(convertView, source, templateId);
-//			}
-
-//		protected override void BindSimpleView (View convertView, object dataContext)
+//	public class ListAdapter : MvxAdapter
 //		{
-//			dataContext
+// 		public ListAdapter(Context context, IMvxAndroidBindingContext bindingContext ) : base(context, bindingContext)
+//		{ 
 //		}
-
-//		protected override View GetBindableView (View convertView, object dataContext)
+//		public override View GetView (int position, View convertView, ViewGroup parent)
 //		{
-//			var view = convertView;
-//			var checkBox = view.FindViewById<CheckBox> (Resource.Id.checkBoxFocusArea);
-//			var order = dataContext as Order;
-//						checkBox.Click += (sender, e) => {
-//						if (checkBox.Checked)
-//					connection.Table<Order>().ElementAt()	order.IsChecked = true;
-//							else
-//								order.IsChecked = false;
-//						};		
-//			return view;
+//		var v = base.GetView(position, convertView, parent);
+//		var order = GetRawItem (position) as Order;
+//		return v;
 //		}
-		
-	
-			public override View GetView (int position, View convertView, ViewGroup parent)
-			{
-			var v = base.GetView(position, convertView, parent);
-			var checkBox = v.FindViewById<CheckBox> (Resource.Id.checkBoxFocusArea);
-			var order = GetRawItem (position) as Order;
-
-			checkBox.Click += (sender, e) => {
-			if (checkBox.Checked)
-					order.Check = true;
-				else if(!checkBox.Checked)
-					order.Check = false;
-			};
-				return v;
-			}
-		}
-
+//	}
 }
 

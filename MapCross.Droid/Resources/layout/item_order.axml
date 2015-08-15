@@ -55,6 +55,6 @@
             android:enabled="true"
             android:layout_gravity="center"
             android:focusable="false"
-            local:MvxBind="Checked Check" />
+            local:MvxBind="Checked IsSelected" />
     </LinearLayout>
 </LinearLayout>

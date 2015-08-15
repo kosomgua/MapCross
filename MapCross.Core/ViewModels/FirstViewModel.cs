@@ -1,15 +1,13 @@
 using Cirrious.MvvmCross.ViewModels;
 using System.Collections.Generic;
 using MapCross.Core.Services;
-using Cirrious.MvvmCross.Plugins.File;
-using System;
 using System.Windows.Input;
 
 namespace MapCross.Core.ViewModels
 {
 	public class FirstViewModel : MvxViewModel
     {
-		public IDataService _dataService;
+		IDataService _dataService;
 
 		List <Order> _orders;
 		public List <Order> Orders
@@ -17,19 +15,10 @@ namespace MapCross.Core.ViewModels
 			get { return _orders; }
 			set { _orders = value; RaisePropertyChanged(() => Orders); }
 		}
-//		bool _isChecked;
-//		public bool IsChecked
-//		{
-//			get { return _isChecked; }
-//			set { _isChecked = value; RaisePropertyChanged(() => IsChecked); }
-//		}
-//		public List<Order> GetItems(){
-//			return _dataService.Filling();
-//		}
+
 		public FirstViewModel (IDataService dataService)
 		{
 			_dataService = dataService;
-//			DebugData ();
 			Orders = _dataService.Filling ();
 		}
 
@@ -63,8 +52,15 @@ namespace MapCross.Core.ViewModels
 			}
 		}
 
-		public void Remove (){
-			_dataService.RemoveSelected(_orders);
+
+		public void Remove ()
+		{
+			foreach (var a in Orders) {
+				if (a.IsSelected) {
+					_dataService.Delete(a);
+				}
+
+			}
 			Orders = _dataService.Filling ();
 		}
 	}

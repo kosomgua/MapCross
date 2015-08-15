@@ -2,6 +2,7 @@
 using Cirrious.MvvmCross.ViewModels;
 using MapCross.Core.Services;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace MapCross.Core.ViewModels
 {
@@ -13,7 +14,6 @@ namespace MapCross.Core.ViewModels
 			_dataService = dataService;
 		}
 
-	
 		string _firstNameOrder;
 		public string FirstNameOrder
 		{
@@ -42,39 +42,27 @@ namespace MapCross.Core.ViewModels
 			set { _longitudeOrder = value; RaisePropertyChanged(() => LongitudeOrder); }
 		}
 
-		string _colorOrder;
-//		public string ColorOrder
-//		{
-//			get { return _colorOrder; }
-//			set { _colorOrder = value; RaisePropertyChanged(() => ColorOrder); }
-//		}
-		public ICommand SelectGreenCommand
-		{
-			get
-			{
-				return new MvxCommand(() => ColorSelect ("green"));
+		string _selectedColor;
+		public string SelectedColor {
+			get {
+				return _selectedColor;
 			}
-		}
-		public ICommand SelectRedCommand
-		{
-			get
-			{
-				return new MvxCommand(() => ColorSelect("red"));
-			}
-		}
-		public ICommand SelectYellowCommand
-		{
-			get
-			{
-				return new MvxCommand(() => ColorSelect("yellow"));
+			set {
+				_selectedColor = value; RaisePropertyChanged (() => SelectedColor);
 			}
 		}
 
-		void ColorSelect(string color)
+		List <string> _colorGroup = new List<string>
 		{
-			_colorOrder = color;
-		}
+			"Red",
+			"Green",
+			"Yellow"
+		};
 
+		public List<string> ColorGroup 
+		{
+			get { return _colorGroup; }
+		}
 
 		public ICommand AddCommand
 		{
@@ -85,8 +73,9 @@ namespace MapCross.Core.ViewModels
 					LastName = _lastNameOrder,
 					HamsterLatitude = _latitudeOrder,
 					HamsterLongitude = _longitudeOrder,
-					HamsterColor = _colorOrder
+					HamsterColor = _selectedColor
 				}));
+
 				}
 		}
 

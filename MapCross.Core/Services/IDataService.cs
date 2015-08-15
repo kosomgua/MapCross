@@ -10,7 +10,6 @@ namespace MapCross.Core.Services
 		void Update(Order order);
 		void Delete(Order order);
 		int Count { get; }
-		void RemoveSelected (List<Order> orders);
 	}
 }
 

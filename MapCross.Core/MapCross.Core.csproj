@@ -39,6 +39,7 @@
     <Compile Include="ViewModels\FirstViewModel.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="Converters\ColorConverters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -67,5 +68,6 @@
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Model\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>

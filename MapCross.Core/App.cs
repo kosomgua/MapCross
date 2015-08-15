@@ -1,17 +1,19 @@
 using Cirrious.CrossCore.IoC;
+using Cirrious.MvvmCross.ViewModels;
+using Cirrious.CrossCore;
 
 namespace MapCross.Core
 {
-    public class App : Cirrious.MvvmCross.ViewModels.MvxApplication
-    {
-        public override void Initialize()
-        {
-            CreatableTypes()
-                .EndingWith("Service")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
-				
-			RegisterAppStart<ViewModels.FirstViewModel>();
-        }
-    }
+	public class App : MvxApplication
+	{
+		public override void Initialize()
+		{
+			CreatableTypes()
+				.EndingWith("Service")
+				.AsInterfaces()
+				.RegisterAsLazySingleton();
+
+			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<ViewModels.FirstViewModel>());
+		}
+	}
 }

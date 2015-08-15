@@ -12,7 +12,7 @@ namespace MapCross.Core
 		public string HamsterLatitude { get; set;}
 		public string HamsterLongitude { get; set;}
 		public string HamsterColor { get; set;}
-		public bool Check { get; set; }
+		public bool IsSelected { get; set; }
 
 		public string Name
 		{
@@ -23,9 +23,9 @@ namespace MapCross.Core
 		public string ImageName 
 		{
 			get{
-				if (HamsterColor == "red") {
+				if (HamsterColor == "Red") {
 					return "res:hamster_red_icon";
-				} else if (HamsterColor == "yellow") {
+				} else if (HamsterColor == "Yellow") {
 					return "res:hamster_yellow_icon";
 				} else {
 					return "res:hamster_green_icon";

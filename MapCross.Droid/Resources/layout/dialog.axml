@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="280dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="280dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textviewdialog"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="16dip"
+            android:text="@string/dialog_text"
+            android:gravity="center"
+            android:textColor="@color/my_white"
+            android:lines="2"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp" />
+        <RadioGroup
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:id="@+id/radioGroupdialog">
+            <RadioButton
+                android:id="@+id/allPointRoute"
+                android:layout_width="250dp"
+                android:layout_height="25dp"
+                android:text="@string/allPointRoute"
+                android:gravity="center"
+                android:textColor="@color/my_white" />
+            <RadioButton
+                android:id="@+id/redRoute"
+                android:layout_width="250dp"
+                android:layout_height="25dp"
+                android:text="@string/red"
+                android:gravity="center"
+                android:textColor="@color/my_white" />
+            <RadioButton
+                android:id="@+id/greenRoute"
+                android:layout_width="250dp"
+                android:layout_height="25dp"
+                android:text="@string/green"
+                android:gravity="center"
+                android:textColor="@color/my_white" />
+            <RadioButton
+                android:id="@+id/yellowRoute"
+                android:layout_width="250dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:text="@string/yellow"
+                android:gravity="center"
+                android:textColor="@color/my_white" />
+        </RadioGroup>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:id="@+id/BuildRoute"
+            android:textSize="14dip"
+            android:text="Build route"
+            android:lines="1"
+            android:gravity="center"
+            android:textColor="@color/my_white"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginRight="75dp"
+            android:background="@drawable/dialogbutton" />
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/PBar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:indeterminateDrawable="@drawable/loader5_progress"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="130dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="110dp"
+        android:visibility="invisible" />
+    <TextView
+        android:id="@+id/textwaitdialog"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center"
+        android:textSize="16dip"
+        android:text="Wait, we are building a route!"
+        android:gravity="center"
+        android:textColor="@color/my_white"
+        android:visibility="invisible" />
+</RelativeLayout>
