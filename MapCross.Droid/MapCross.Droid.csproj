@@ -236,9 +236,6 @@
     <AndroidResource Include="Resources\values\style.xml" />
     <AndroidResource Include="Resources\layout\MapView.axml" />
     <AndroidResource Include="Resources\layout\OrderView.axml" />
-    <AndroidResource Include="Resources\drawable\hamster_green_icon.png" />
-    <AndroidResource Include="Resources\drawable\hamster_red_icon.png" />
-    <AndroidResource Include="Resources\drawable\hamster_yellow_icon.png" />
     <AndroidResource Include="Resources\layout\FirstView.axml" />
     <AndroidResource Include="Resources\layout\itemRadio.xml" />
     <AndroidResource Include="Resources\layout\dialog.axml" />

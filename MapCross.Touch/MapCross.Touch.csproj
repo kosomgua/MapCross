@@ -94,22 +94,21 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.File.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Plugins.File.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\portable-win+net45+MonoAndroid+MonoTouch+sl5+wp8\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
-    </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Plugins.DownloadCache.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Plugins.DownloadCache.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch">
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
-    <InterfaceDefinition Include="Views\FirstView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -121,16 +120,34 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Views\FirstView.cs" />
-    <Compile Include="Views\FirstView.designer.cs">
-      <DependentUpon>FirstView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Setup.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="swp8\Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
+    <Compile Include="Views\FirstView.cs" />
+    <Compile Include="Views\FirstView.designer.cs">
+      <DependentUpon>FirstView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderView.cs" />
+    <Compile Include="Views\OrderView.designer.cs">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapView.cs" />
+    <Compile Include="Views\MapView.designer.cs">
+      <DependentUpon>MapView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrdersCell.cs" />
+    <Compile Include="Views\OrdersCell.designer.cs">
+      <DependentUpon>OrdersCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomBindings\MvxUISegmentedControlSelectedSegmentTargetBinding.cs" />
+    <Compile Include="Overlays\LoadOverlay.cs" />
+    <Compile Include="Map custom\BasicPinAnnotation.cs" />
+    <Compile Include="Map custom\MapDelegate.cs" />
+    <Compile Include="CustomBindings\MvxDeleteStandardTableViewSource.cs" />
+    <Compile Include="Helpers\ResizeImage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -138,5 +155,25 @@
       <Project>{C280EBED-108E-4A2E-8AE4-BCBD0C419E56}</Project>
       <Name>MapCross.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="CustomBindings\" />
+    <Folder Include="Overlays\" />
+    <Folder Include="Map custom\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Views\FirstView.xib" />
+    <InterfaceDefinition Include="Views\OrderView.xib" />
+    <InterfaceDefinition Include="Views\MapView.xib" />
+    <InterfaceDefinition Include="Views\OrdersCell.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\.DS_Store" />
+    <BundleResource Include="Resources\Images\.DS_Store" />
+    <BundleResource Include="Resources\hamster_green_icon.png" />
+    <BundleResource Include="Resources\hamster_red_icon.png" />
+    <BundleResource Include="Resources\hamster_yellow_icon.png" />
   </ItemGroup>
 </Project>

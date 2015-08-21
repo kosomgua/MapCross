@@ -1,60 +1,61 @@
-﻿using Cirrious.MvvmCross.Binding.BindingContext;
-using Cirrious.MvvmCross.Touch.Views;
-using CoreGraphics;
-using Foundation;
-using ObjCRuntime;
-using UIKit;
-using Cirrious.CrossCore;
-using Cirrious.MvvmCross.ViewModels;
+﻿
+using System;
 
-namespace MapCross.Touch.Views
+using Foundation;
+using UIKit;
+using MapCross.Core.ViewModels;
+using Cirrious.MvvmCross.Touch.Views;
+using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.Binding.Touch.Views;
+
+namespace MapCross.Touch
 {
-	[Register("FirstView")]
 	public partial class FirstView : MvxViewController
-	{ 
-				public FirstView () : base ("FirstView", null)
-				{
-				}
-//		public FirstView ()
+	{
+		public FirstView () : base ("FirstView", null)
+		{
+		} 
+
+//		public new FirstViewModel ViewModel
 //		{
+//			get { return (FirstViewModel) base.ViewModel; }
+//			set { base.ViewModel = value; }
 //		}
-//		
-//
-//		public FirstView (System.IntPtr handle) : base (handle)
-//		{
-//		}
-//		
-//
-//		public FirstView (string nibName, NSBundle bundle) : base (nibName, bundle)
-//		{
-//		}
-		
+		private FirstViewModel m_ViewModel;
+		public new FirstViewModel ViewModel
+		{
+			get { return m_ViewModel ?? (m_ViewModel = base.ViewModel as FirstViewModel); }
+		}
+
 		public override void ViewDidLoad()
 		{
 
-			//            View = new UIView { BackgroundColor = UIColor.White };
 			base.ViewDidLoad();
+			var leftNavBarItem = new UIBarButtonItem(UIBarButtonSystemItem.Add); 
+			NavigationItem.SetLeftBarButtonItem(leftNavBarItem,true);
+			var rightNavBarItem = new UIBarButtonItem();
+			NavigationItem.SetRightBarButtonItem(rightNavBarItem,true);
+			rightNavBarItem.Title = "Open Map";
+			rightNavBarItem.TintColor = UIColor.Orange;
+			leftNavBarItem.TintColor = UIColor.Orange;
 
-			//
-			// ios7 layout
-			//            if (RespondsToSelector(new Selector("edgesForExtendedLayout")))
-			//            {
-			//               EdgesForExtendedLayout = UIRectEdge.None;
-			//            }
-			//			Table
-			//			AddOrderButton
-			//			OpenMapButton
+//			var source = new MvxSimpleTableViewSource(Table, OrdersCell.Key, OrdersCell.Key);
+			var source = new MvxDeleteStandardTableViewSource(ViewModel, Table, "TitleText .");
 
-			//            var label = new UILabel(new CGRect(10, 10, 300, 40));
-			//            Add(label);
-			//            var textField = new UITextField(new CGRect(10, 50, 300, 40));
-			//            Add(textField);
-			//
-			var set = this.CreateBindingSet<FirstView, MapCross.Core.ViewModels.FirstViewModel>();
-			set.Bind(Table).To(vm => vm.Orders);
-			set.Bind(AddOrderButton).To(vm => vm.NewOrderCommand);
-			set.Bind(OpenMapButton).To(vm => vm.GoMapCommand);
+			Table.RowHeight = 50;
+			Table.Source = source;
+//			var source = new MvxDeleteStandardTableViewSource
+//				(ViewModel, TableView, UITableViewCellStyle.Default,
+//					new NSString("my_item"), "TitleText Title", UITableViewCellAccessory.DetailDisclosureButton);
+//			TableView.Source = source;
+
+			var set = this.CreateBindingSet<FirstView, FirstViewModel>();
+			set.Bind(source).To(vm => vm.Orders);
+			set.Bind(leftNavBarItem).To(vm => vm.NewOrderCommand);
+			set.Bind(rightNavBarItem).To(vm => vm.GoMapCommand);
 			set.Apply();
 		}
+
 	}
 }
+

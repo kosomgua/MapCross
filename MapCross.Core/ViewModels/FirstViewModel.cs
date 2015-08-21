@@ -7,7 +7,7 @@ namespace MapCross.Core.ViewModels
 {
 	public class FirstViewModel : MvxViewModel
     {
-		IDataService _dataService;
+		public IDataService _dataService;
 
 		List <Order> _orders;
 		public List <Order> Orders
@@ -27,7 +27,7 @@ namespace MapCross.Core.ViewModels
 		{
 			get
 			{
-				_deleteCommand = _deleteCommand ?? new MvxCommand(Remove);
+				_deleteCommand = _deleteCommand ?? new MvxCommand(() => Remove ());
 				return _deleteCommand;
 			}
 		}
@@ -63,5 +63,6 @@ namespace MapCross.Core.ViewModels
 			}
 			Orders = _dataService.Filling ();
 		}
+
 	}
 }

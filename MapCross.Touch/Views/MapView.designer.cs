@@ -9,17 +9,17 @@ using System.CodeDom.Compiler;
 
 namespace MapCross.Touch
 {
-	[Register ("FirstView")]
-	partial class FirstView
+	[Register ("MapView")]
+	partial class MapView
 	{
 		[Outlet]
-		UIKit.UITableView Table { get; set; }
+		MapKit.MKMapView map { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (Table != null) {
-				Table.Dispose ();
-				Table = null;
+			if (map != null) {
+				map.Dispose ();
+				map = null;
 			}
 		}
 	}

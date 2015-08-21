@@ -52,6 +52,60 @@ namespace MapCross.Core.ViewModels
 			}
 		}
 
+		int _selectedSegment;
+
+		public int SelectedSegment
+		{
+			get {return _selectedSegment;}
+			set
+			{
+				_selectedSegment = value;
+				RaisePropertyChanged(() => SelectedSegment);
+			}
+		}
+
+		string finalColorSelected ()
+		{
+			if (_selectedColor != null)
+				return _selectedColor;
+			else
+				switch (_selectedSegment) {
+					case 0:
+				return "Red"; 
+					case 1:
+				return "Green"; 
+					case 2:
+				return "Yellow"; 
+					default:
+				return "error"; 
+					}
+
+		}
+
+//		public int ColorIos {
+//			get {
+//				return 0;
+//			}
+//			set {
+//				switch (value) {
+//				case 0:
+//					_selectedColor = "Red";
+//					break;
+//				case 1:
+//					_selectedColor = "Green";
+//					break;
+//				case 2:
+//					_selectedColor = "Yellow";
+//					break;
+//				default:
+//					_selectedColor = "error";
+//					break;
+//				}
+//				RaisePropertyChanged (() => ColorIos);
+//			}
+//		}
+
+
 		List <string> _colorGroup = new List<string>
 		{
 			"Red",
@@ -64,26 +118,18 @@ namespace MapCross.Core.ViewModels
 			get { return _colorGroup; }
 		}
 
-		public ICommand AddCommand
-		{
-			get
-			{
-				return new MvxCommand (() => _dataService.Add (new Order {
-					FirstName = _firstNameOrder,
-					LastName = _lastNameOrder,
-					HamsterLatitude = _latitudeOrder,
-					HamsterLongitude = _longitudeOrder,
-					HamsterColor = _selectedColor
-				}));
-
-				}
-		}
-
 		public ICommand AddOrder
 		{
 			get
 			{
 				return new MvxCommand(() => {
+					_dataService.Add (new Order {
+						FirstName = _firstNameOrder,
+						LastName = _lastNameOrder,
+						HamsterLatitude = _latitudeOrder,
+						HamsterLongitude = _longitudeOrder,
+						HamsterColor = finalColorSelected(),
+					});
 					ShowViewModel<FirstViewModel>();
 				});
 			}

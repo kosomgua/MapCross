@@ -38,6 +38,11 @@ namespace MapCross.Core.Services
 			_connection.Delete (order);
 		}
 
+		public void Delete (int i)
+		{
+			_connection.Delete<Order> (i);
+		}
+
 		public int Count {
 			get {
 				return _connection.Table<Order> ().Count();

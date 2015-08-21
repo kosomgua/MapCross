@@ -9,6 +9,7 @@ namespace MapCross.Core.Services
 		void Add(Order order);
 		void Update(Order order);
 		void Delete(Order order);
+		void Delete(int orderId);
 		int Count { get; }
 	}
 }

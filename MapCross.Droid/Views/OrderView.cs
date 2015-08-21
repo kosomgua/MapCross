@@ -36,7 +36,7 @@ namespace MapCross.Droid
 	public override bool OnOptionsItemSelected (IMenuItem item)
 	{	
 		base.OnOptionsItemSelected (item);
-			((OrderViewModel)ViewModel).AddCommand.Execute(null);
+//			((OrderViewModel)ViewModel).AddCommand.Execute(null);
 			((OrderViewModel)ViewModel).AddOrder.Execute(null);
 		return true;
 	}
