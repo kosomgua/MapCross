@@ -2,12 +2,14 @@ using Cirrious.MvvmCross.ViewModels;
 using System.Collections.Generic;
 using MapCross.Core.Services;
 using System.Windows.Input;
+using System.Linq;
 
 namespace MapCross.Core.ViewModels
 {
-	public class FirstViewModel : MvxViewModel
+	public class FirstViewModel  : MvxViewModel 
     {
 		public IDataService _dataService;
+
 
 		List <Order> _orders;
 		public List <Order> Orders
@@ -15,24 +17,24 @@ namespace MapCross.Core.ViewModels
 			get { return _orders; }
 			set { _orders = value; RaisePropertyChanged(() => Orders); }
 		}
-
+		 
 		public FirstViewModel (IDataService dataService)
-		{
+		{ 
 			_dataService = dataService;
-			Orders = _dataService.Filling ();
+			_dataService.CreateTable <Order> ();
+			Orders = _dataService.Filling <Order>();
 		}
+		
 
-		MvxCommand _deleteCommand;
 		public ICommand DeleteCommand
 		{
 			get
 			{
-				_deleteCommand = _deleteCommand ?? new MvxCommand(() => Remove ());
-				return _deleteCommand;
+				return  new MvxCommand(() => Remove ());
 			}
 		}
 
-		public IMvxCommand NewOrderCommand
+		public MvxCommand NewOrderCommand
 		{
 			get 
 			{
@@ -42,7 +44,7 @@ namespace MapCross.Core.ViewModels
 			}
 		}
 
-		public IMvxCommand GoMapCommand
+		public MvxCommand GoMapCommand
 		{
 			get 
 			{
@@ -61,7 +63,7 @@ namespace MapCross.Core.ViewModels
 				}
 
 			}
-			Orders = _dataService.Filling ();
+			Orders = _dataService.Filling <Order> ();
 		}
 
 	}

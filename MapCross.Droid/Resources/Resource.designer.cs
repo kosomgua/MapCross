@@ -3263,13 +3263,13 @@ namespace MapCross.Droid
 			public const int forlist2 = 2130837673;
 			
 			// aapt resource value: 0x7f020061
-			public const int hamster_green = 2130837601;
+			public const int hamster_green_icon = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int hamster_red = 2130837602;
+			public const int hamster_red_icon = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int hamster_yellow = 2130837603;
+			public const int hamster_yellow_icon = 2130837603;
 			
 			// aapt resource value: 0x7f020064
 			public const int i_hide = 2130837604;

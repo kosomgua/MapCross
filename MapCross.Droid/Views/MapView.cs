@@ -14,6 +14,7 @@ using Android.Graphics;
 using MapCross.Core.ViewModels;
 using Org.Json;
 using System.Net.Http;
+using MapCross.Core;
 
 namespace MapCross.Droid
 {
@@ -21,8 +22,8 @@ namespace MapCross.Droid
 	public class MapView : MvxActivity, IOnMapReadyCallback, GoogleMap.IInfoWindowAdapter
 	{ 
 		#region privateField
-		MapViewModel viewModel;
-		string url, selectTypeOfOrders;
+		MapViewModel _viewModel;
+		string  selectTypeOfOrders;
 		RadioButton radioAll, radioRedRoute, radioGreenRoute, radioYellowRoute;
 		Button dialogButton;
 		IMenu menuG;	
@@ -36,20 +37,20 @@ namespace MapCross.Droid
 		const float greenFloat = 1.000003F;
 		const string error = "failed";
 		const string allSelect = "all";
-		#endregion 
+        Dictionary<string, HamsterColor> markerColor;
+        #endregion 
 
-			protected override void OnCreate (Bundle bundle)
-			{
-				base.OnCreate (bundle);
-				SetContentView (Resource.Layout.MapView);
-//				var applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "dataOrders");
-//				var databaseFileName = System.IO.Path.Combine(applicationFolderPath, "dataOrders.db");
-//				db = new SQLiteConnection (databaseFileName);
-//				table = db.Table<Order_on_hamster> ();
-			    viewModel = (MapViewModel) ViewModel;
-				SetupMap ();
+		public new MapViewModel ViewModel
+		{
+			get { return _viewModel ?? (_viewModel = base.ViewModel as MapViewModel); }
+		}
 
-			} 
+		protected override void OnCreate (Bundle bundle)
+		{
+			base.OnCreate (bundle);
+			SetContentView (Resource.Layout.MapView);
+			SetupMap (); 
+		} 
 		
 		void SetupMap ()
 		{
@@ -60,7 +61,8 @@ namespace MapCross.Droid
 		public void OnMapReady(GoogleMap googleMap)
 		{
 			globMap = googleMap;
-			foreach ( var a in viewModel.Markers) {
+            markerColor = new Dictionary<string, HamsterColor>();
+			foreach ( var a in ViewModel.Markers) {
 				var markerOpt = new MarkerOptions();
 				double la = double.Parse(a.HamsterLatitude, System.Globalization.CultureInfo.InvariantCulture);
 				double lon = double.Parse (a.HamsterLongitude, System.Globalization.CultureInfo.InvariantCulture);
@@ -68,19 +70,9 @@ namespace MapCross.Droid
 				markerOpt.SetPosition (latlng);
 				markerOpt.SetTitle (String.Format("Name: {0} {1} ", a.FirstName, a.LastName));
 				markerOpt.SetSnippet (String.Format("Latitude: {0}  Longitude: {1} ", a.HamsterLatitude, a.HamsterLongitude));
-
-				switch (a.HamsterColor) {
-				case "Red":
-					markerOpt.SetAlpha (redFloat);
-					break;
-				case "Yellow":
-					markerOpt.SetAlpha (yellowFloat);
-					break;
-				case "Green":
-					markerOpt.SetAlpha (greenFloat);
-					break;
-				}
-				globMap.AddMarker(markerOpt);
+               
+				globMap.AddMarker(markerOpt); 
+                markerColor.Add(String.Format("{0}{1}",markerOpt.Title, markerOpt.Snippet), a.Color); 
 			}
 			globMap.MyLocationEnabled = true;
 			globMap.UiSettings.CompassEnabled = true;
@@ -106,17 +98,19 @@ namespace MapCross.Droid
 			var coord = view.FindViewById<TextView> (Resource.Id.MarkerCoord);
 			var image = view.FindViewById<ImageView> (Resource.Id.MarkerImage);
 			coord.Text = marker.Snippet;
+            HamsterColor color;
+            markerColor.TryGetValue(String.Format("{0}{1}", marker.Title, marker.Snippet), out color);
 
-			if (marker.Alpha.Equals(redFloat)) {
+            if (color == HamsterColor.Red) {
 				image.SetImageDrawable ((ImageAssetManager.Get (this, "images/hamster_red_icon.png")));
 				coord.SetTextColor (Color.Red);
-			} else if (marker.Alpha.Equals(yellowFloat)) {
+            } else if (color == HamsterColor.Yellow) {
 				image.SetImageDrawable ((ImageAssetManager.Get (this, "images/hamster_yellow_icon.png")));
 				coord.SetTextColor (Color.Yellow);
-			} else if (marker.Alpha.Equals(greenFloat)) {
+            } else if (color == HamsterColor.Green) {
 				image.SetImageDrawable ((ImageAssetManager.Get (this, "images/hamster_green_icon.png")));
 				coord.SetTextColor (Color.Green);
-			}
+			} 
 			return view;
 		}
 
@@ -200,16 +194,15 @@ namespace MapCross.Droid
 		{
 			var getData = GetMapsApiDirectionsUrl (selectTypeOfOrders);
 
-			if (getData.Equals(allSelect))
+			if (getData.Equals(error))
 			{
 				Toast.MakeText (this, "Not enough coordinates for route planning", ToastLength.Long).Show ();
 				DialogDismiss ();
 		}
-			else {
-				url = getData;
+			else { 
 				var client = new HttpClient ();
-				await client.GetStringAsync (url);
-				var data = client.GetStringAsync (url).Result;
+				await client.GetStringAsync (getData);
+				var data = client.GetStringAsync (getData).Result;
 				client.Dispose ();
 				await AsyncFilling (data);
 				DialogDismiss ();
@@ -239,13 +232,13 @@ namespace MapCross.Droid
 			List<string> latitudeString = new List <string> ();
 			List<string> longitudeString = new List <string> ();
 			string urlLocal;
-			foreach (var a in viewModel.Markers) {
+			foreach (var a in ViewModel.Markers) {
 
 				if (select.Equals(allSelect)) {
 					latitudeString.Add (a.HamsterLatitude);
 					longitudeString.Add (a.HamsterLongitude);
 				}
-				else if (a.HamsterColor == select) {
+				else if (Enum.GetName(typeof(HamsterColor), a.Color) == select) {
 					latitudeString.Add (a.HamsterLatitude);
 					longitudeString.Add (a.HamsterLongitude);
 				}
@@ -270,7 +263,7 @@ namespace MapCross.Droid
 			return urlLocal;
 		}
 
-		public Task <List<PolylineOptions>> Filling (string data)
+ 		public Task <List<PolylineOptions>> Filling (string data)
 		{
 			return Task.Run(() => {
 				
@@ -279,7 +272,7 @@ namespace MapCross.Droid
 			var jsonData = "";
 				jsonData = data;
 				var jObject = new JSONObject (jsonData);
-				PathJsonParser parser = new PathJsonParser ();
+				var parser = new PathJsonParser ();
 				var ListCoords = parser.parse (jObject);
 
 				if(ListCoords.Count > 0){

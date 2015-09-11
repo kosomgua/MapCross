@@ -5,12 +5,11 @@ namespace MapCross.Core.Services
 {
 	public interface IDataService
 	{
-		List<Order> Filling();
-		void Add(Order order);
-		void Update(Order order);
-		void Delete(Order order);
-		void Delete(int orderId);
-		int Count { get; }
-	}
+		void CreateTable <T> () where T :new();  
+		List<T> Filling <T> () where T :new();
+		void Add <T>(T order) where T :new(); 
+		void Update <T>(T order) where T :new();
+		void Delete <T>(T order) where T :new(); 
+	}  
 }
 

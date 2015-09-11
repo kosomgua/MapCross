@@ -18,11 +18,8 @@ namespace MapCross.Droid.Views
 	[Activity (Theme = "@style/MyCustomTheme")]
 	public class FirstView : MvxActivity
     {
-//		CheckBox box;
 		IMenu menuG;	
 		ListView listView;
-//		ListAdapter _adapter;
-//		IMenuItem acceptButton, mapButton, editButton;
 		FloatingActionButton fab;
         protected override void OnCreate(Bundle bundle)
         {
@@ -33,9 +30,10 @@ namespace MapCross.Droid.Views
 			fab.AttachToListView(listView);
 
         }
-		protected FirstViewModel FirstViewModel
+		FirstViewModel m_ViewModel;
+		public new FirstViewModel ViewModel
 		{
-			get { return base.ViewModel as FirstViewModel; }
+			get { return m_ViewModel ?? (m_ViewModel = base.ViewModel as FirstViewModel); }
 		}
 
 		protected override void OnStop ()
@@ -52,7 +50,7 @@ namespace MapCross.Droid.Views
 
 		void FABClick (object sender, EventArgs e)
 		{
-			((FirstViewModel)ViewModel).NewOrderCommand.Execute(null);
+			ViewModel.NewOrderCommand.Execute(null);
 		}
     
 
@@ -61,9 +59,6 @@ namespace MapCross.Droid.Views
 			menuG = menu;
 			base.OnCreateOptionsMenu (menuG);
 			MenuInflater.Inflate (Resource.Menu.home, menuG);
-//			acceptButton = menuG.FindItem (Resource.Id.AcceptButton);
-//			mapButton = menuG.FindItem (Resource.Id.MapButton);
-//			editButton = menuG.FindItem (Resource.Id.EditButton);
 
 			return true;
 
@@ -74,11 +69,11 @@ namespace MapCross.Droid.Views
 
 			switch (item.ItemId) {
 			case Resource.Id.DeleteButton:
-				((FirstViewModel)ViewModel).DeleteCommand.Execute(null);
+				ViewModel.DeleteCommand.Execute(null);
 				return true;
 
 			case Resource.Id.MapButton:
-				((FirstViewModel)ViewModel).GoMapCommand.Execute(null);
+				ViewModel.GoMapCommand.Execute(null);
 				return true;
 			}
 			return true;

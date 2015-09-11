@@ -20,7 +20,7 @@ namespace MapCross.Core.ViewModels
 		public MapViewModel (IDataService dataService)
 		{
 			_dataService = dataService;
-			Markers = _dataService.Filling ();
+			Markers = _dataService.Filling <Order> ();
 		}
 	}
 }

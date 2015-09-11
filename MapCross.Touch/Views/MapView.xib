@@ -15,11 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6Gg-ZI-VIy">
-                    <rect key="frame" x="-8" y="-187" width="328" height="755"/>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="6Gg-ZI-VIy">
+                    <rect key="frame" x="0.0" y="0.0" width="328" height="568"/>
                 </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="6Gg-ZI-VIy" secondAttribute="trailing" constant="-8" id="hnl-D3-Cpt"/>
+                <constraint firstItem="6Gg-ZI-VIy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kyW-Ty-C8u"/>
+                <constraint firstAttribute="bottom" secondItem="6Gg-ZI-VIy" secondAttribute="bottom" id="x4R-xJ-SHc"/>
+                <constraint firstItem="6Gg-ZI-VIy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yfb-hX-thf"/>
+            </constraints>
+            <point key="canvasLocation" x="298" y="368"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

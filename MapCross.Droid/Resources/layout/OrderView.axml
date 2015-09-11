@@ -133,20 +133,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
             <ImageView
-                android:id="@+id/colorHamster"
-                android:background="@drawable/hamster_red"
+                android:background="@drawable/hamster_red_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="60dp" />
             <ImageView
-                android:id="@+id/colorHamster"
-                android:background="@drawable/hamster_green"
+                android:background="@drawable/hamster_green_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="60dp" />
             <ImageView
-                android:id="@+id/colorHamster"
-                android:background="@drawable/hamster_yellow"
+                android:background="@drawable/hamster_yellow_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="60dp" />
@@ -156,6 +153,6 @@
             android:layout_height="40dp"
             android:orientation="horizontal"
             local:MvxItemTemplate="@layout/itemradio"
-            local:MvxBind="ItemsSource ColorGroup; SelectedItem SelectedColor" />
+            local:MvxBind="ItemsSource ColorGroup; SelectedItem SelectedSegment" />
     </LinearLayout>
 </RelativeLayout>

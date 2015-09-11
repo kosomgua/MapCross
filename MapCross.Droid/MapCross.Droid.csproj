@@ -12,7 +12,7 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>MapCross.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
@@ -201,9 +201,6 @@
     <AndroidResource Include="Resources\drawable\del.png" />
     <AndroidResource Include="Resources\drawable\dg.xml" />
     <AndroidResource Include="Resources\drawable\dialogbutton.xml" />
-    <AndroidResource Include="Resources\drawable\hamster_green.png" />
-    <AndroidResource Include="Resources\drawable\hamster_red.png" />
-    <AndroidResource Include="Resources\drawable\hamster_yellow.png" />
     <AndroidResource Include="Resources\drawable\i_hide.xml" />
     <AndroidResource Include="Resources\drawable\ic_action_accept.png" />
     <AndroidResource Include="Resources\drawable\ic_action_bike.png" />
@@ -240,6 +237,9 @@
     <AndroidResource Include="Resources\layout\itemRadio.xml" />
     <AndroidResource Include="Resources\layout\dialog.axml" />
     <AndroidResource Include="Resources\layout\markerView.xml" />
+    <AndroidResource Include="Resources\drawable\hamster_green_icon.png" />
+    <AndroidResource Include="Resources\drawable\hamster_red_icon.png" />
+    <AndroidResource Include="Resources\drawable\hamster_yellow_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

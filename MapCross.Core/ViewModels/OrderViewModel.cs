@@ -8,7 +8,7 @@ namespace MapCross.Core.ViewModels
 {
 	public class OrderViewModel : MvxViewModel
 	{
-		readonly IDataService _dataService;
+		IDataService _dataService;
 		public OrderViewModel (IDataService dataService)
 		{
 			_dataService = dataService;
@@ -40,20 +40,9 @@ namespace MapCross.Core.ViewModels
 		{
 			get { return _longitudeOrder; }
 			set { _longitudeOrder = value; RaisePropertyChanged(() => LongitudeOrder); }
-		}
+		} 
 
-		string _selectedColor;
-		public string SelectedColor {
-			get {
-				return _selectedColor;
-			}
-			set {
-				_selectedColor = value; RaisePropertyChanged (() => SelectedColor);
-			}
-		}
-
-		int _selectedSegment;
-
+		int _selectedSegment; 
 		public int SelectedSegment
 		{
 			get {return _selectedSegment;}
@@ -64,59 +53,32 @@ namespace MapCross.Core.ViewModels
 			}
 		}
 
-		string finalColorSelected ()
+		HamsterColor  finalColorSelected ()
 		{
-			if (_selectedColor != null)
-				return _selectedColor;
-			else
+			 HamsterColor _color = new  HamsterColor (); 
 				switch (_selectedSegment) {
-					case 0:
-				return "Red"; 
-					case 1:
-				return "Green"; 
-					case 2:
-				return "Yellow"; 
-					default:
-				return "error"; 
-					}
+				case 0:
+				return HamsterColor.Red;
+				case 1:
+				return HamsterColor.Green;
+				case 2:
+				return HamsterColor.Yellow;
+				}
 
+			return _color;
 		}
-
-//		public int ColorIos {
-//			get {
-//				return 0;
-//			}
-//			set {
-//				switch (value) {
-//				case 0:
-//					_selectedColor = "Red";
-//					break;
-//				case 1:
-//					_selectedColor = "Green";
-//					break;
-//				case 2:
-//					_selectedColor = "Yellow";
-//					break;
-//				default:
-//					_selectedColor = "error";
-//					break;
-//				}
-//				RaisePropertyChanged (() => ColorIos);
-//			}
-//		}
-
-
-		List <string> _colorGroup = new List<string>
+ 
+		List <int> _colorGroup = new List<int>
 		{
-			"Red",
-			"Green",
-			"Yellow"
+			0,
+			1,
+			2
 		};
 
-		public List<string> ColorGroup 
+		public List<int> ColorGroup 
 		{
 			get { return _colorGroup; }
-		}
+		}  
 
 		public ICommand AddOrder
 		{
@@ -126,9 +88,11 @@ namespace MapCross.Core.ViewModels
 					_dataService.Add (new Order {
 						FirstName = _firstNameOrder,
 						LastName = _lastNameOrder,
+						Color = finalColorSelected(),
 						HamsterLatitude = _latitudeOrder,
-						HamsterLongitude = _longitudeOrder,
-						HamsterColor = finalColorSelected(),
+						HamsterLongitude = _longitudeOrder
+
+							
 					});
 					ShowViewModel<FirstViewModel>();
 				});

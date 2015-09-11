@@ -97,7 +97,7 @@ namespace MapCross.Touch
 					double.Parse (a.HamsterLatitude, System.Globalization.CultureInfo.InvariantCulture),
 					double.Parse (a.HamsterLongitude, System.Globalization.CultureInfo.InvariantCulture)),
 					string.Format("Name: {0} {1} ", a.FirstName, a.LastName),
-					description, ImagePath(a.HamsterColor));
+					description, ImagePath(Enum.GetName(typeof(HamsterColor),a.Color)));
 				map.AddAnnotation (annotation);
 			}
 
@@ -107,8 +107,7 @@ namespace MapCross.Touch
 		{
 			switch (color){
 			case "Red":
-//				return "Images/hamster_red_icon.jpg";
-			return "hamster_red_icon.png";
+ 			return "hamster_red_icon.png";
 			case "Green":
 				return "hamster_green_icon.png";
 			case "Yellow":
@@ -129,8 +128,8 @@ namespace MapCross.Touch
 				bounds.Size = new CGSize(bounds.Size.Height, bounds.Size.Width);
 			}
 			// show the loading overlay on the UI thread using the correct orientation sizing
-			this._loadPop = new LoadingOverlay (bounds);
-			this.View.Add ( this._loadPop );
+			_loadPop = new LoadingOverlay (bounds);
+			View.Add (_loadPop);
 		}
 
 		void CreateRoute(string select)
@@ -138,11 +137,11 @@ namespace MapCross.Touch
 			//start 
 			OverlayOptions ();
 
-			List <Order> selectedColor = new List<Order> ();;
+			List <Order> selectedColor = new List<Order> ();
 			foreach (var l in ViewModel.Markers) {
-				if (l.HamsterColor == select) {
+				if (Enum.GetName(typeof(HamsterColor),l.Color) == select) 
 					selectedColor.Add (l);
-				}
+				
 			}
 			if(select.Equals(All))
 				selectedColor = ViewModel.Markers;

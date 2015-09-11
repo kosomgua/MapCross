@@ -2,54 +2,47 @@
 using System.Collections.Generic;
 using Cirrious.MvvmCross.Community.Plugins.Sqlite;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Collections;
 
 namespace MapCross.Core.Services
 {
 	public class DataService : IDataService
-	{
+	{ 
 
-		private  ISQLiteConnection _connection;
+		ISQLiteConnection _connection;
+		const string dbPath = "one.sql";
 
-		public DataService (ISQLiteConnectionFactory factory)
+		public DataService (ISQLiteConnectionFactory fac)
 		{
-			_connection = factory.Create("one.sql");
-			_connection.CreateTable<Order>();
+			
+			_connection = fac.Create(dbPath);
 		}
 
-		#region IDataServices implementation
-
-		public List<Order> Filling ()
+		public void CreateTable <T> ()  where T :new()
 		{
-			return _connection.Table<Order> ().ToList ();
+			_connection.CreateTable<T> ();
+		}
+		public List<T> Filling <T> () where T : new()
+		{
+			return _connection.Table <T>().ToList();
 		}
 
-		public void Add (Order order)
+		public void Add  <T> (T order)  where T :new()
 		{
 			_connection.Insert (order);
 		}
 
-		public void Update (Order order)
+		public void Update  <T> (T order)  where T :new()
 		{
 			_connection.Update (order);
 		}
 
-		public void Delete (Order order)
+		public void Delete  <T> (T order) where T :new()
 		{
 			_connection.Delete (order);
-		}
+		} 
 
-		public void Delete (int i)
-		{
-			_connection.Delete<Order> (i);
-		}
-
-		public int Count {
-			get {
-				return _connection.Table<Order> ().Count();
-			}
-		}
-
-		#endregion
 	}
 }
 
