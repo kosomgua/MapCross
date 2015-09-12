@@ -38,6 +38,7 @@
                 android:textColor="#ff195b4a"
                 android:layout_weight="1"
                 android:layout_gravity="center"
+                android:textSize="12dp"
                 android:gravity="center"
                 android:maxLength="12" />
         </LinearLayout>
@@ -63,7 +64,8 @@
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:maxLength="12" />
+                android:maxLength="12"
+                android:textSize="12dp" />
         </LinearLayout>
         <TextView
             android:text="Enter the coordinates"
@@ -94,7 +96,9 @@
                 android:editable="true"
                 android:textColor="#ff195b4a"
                 android:layout_weight="2"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:maxLength="13"
+                android:textSize="12dp" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -117,7 +121,9 @@
                 android:editable="true"
                 android:textColor="#ff195b4a"
                 android:layout_weight="2"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:maxLength="13"
+                android:textSize="12dp" />
         </LinearLayout>
         <TextView
             android:text="Select color for hamster:"

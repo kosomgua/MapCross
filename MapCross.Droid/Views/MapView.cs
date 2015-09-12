@@ -149,7 +149,7 @@ namespace MapCross.Droid
 			return true;
 		}
 
-		void DialogButtonClick (object sender, EventArgs e)
+        async void DialogButtonClick (object sender, EventArgs e)
 		{
 			ProgressBar myProgressBar;
 			myProgressBar = (ProgressBar)dialog.FindViewById (Resource.Id.PBar);
@@ -161,7 +161,7 @@ namespace MapCross.Droid
 			waitTextView.Visibility = ViewStates.Visible;
 			myProgressBar.Indeterminate = true;
 
-			GetUrlAndGrubData ();
+			await GetUrlAndGrubData ();
 
 		}
 
